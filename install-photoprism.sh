@@ -45,7 +45,7 @@ echo "Creating SMB mount point..."
 
 pct exec $CTID -- bash -c "
 mkdir -p /mnt/originals
-echo \"//$NAS_SERVER/$NAS_SHARE /mnt/originals cifs username=$NAS_USER,password=$NAS_PASS,iocharset=utf8,vers=3.0 0 0\" >> /etc/fstab
+echo \"//$NAS_SERVER/$NAS_SHARE /mnt/originals cifs username=$NAS_USER,password=$NAS_PASS,iocharset=utf8,vers=3.0,uid=1000,gid=1000,file_mode=0777,dir_mode=0777 0 0\" >> /etc/fstab
 mount -a
 "
 
