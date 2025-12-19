@@ -90,6 +90,7 @@ grep -q '/mnt/originals' /etc/fstab || echo \"//$NAS_SERVER/$NAS_SHARE /mnt/orig
 " || abort "Failed to configure fstab entry for SMB"
 
 echo "Mounting SMB share..."
+systemctl daemon-reload
 pct exec "$CTID" -- bash -c "mount -a" || abort "mount -a failed in container"
 
 echo "Verifying SMB mount..."
