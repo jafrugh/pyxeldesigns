@@ -86,7 +86,7 @@ pct exec "$CTID" -- bash -c "
 mkdir -p /mnt/originals
 
 # Add SMB mount to fstab with correct permissions
-grep -q '/mnt/originals' /etc/fstab || echo \"//$NAS_SERVER/$NAS_SHARE /mnt/originals cifs username=$NAS_USER,password=$NAS_PASS,iocharset=utf8,vers=3.0,uid=1000,gid=1000,file_mode=0777,dir_mode=0777,nounix,noserverino 0 0\" >> /etc/fstab
+grep -q '/mnt/originals' /etc/fstab || echo \"//$NAS_SERVER/$NAS_SHARE /mnt/originals cifs username=$NAS_USER,password=$NAS_PASS,iocharset=utf8,vers=3.0,uid=1000,gid=1000,file_mode=0777,dir_mode=0777,nounix,noserverino,_netdev,x-systemd.automount 0 0\" >> /etc/fstab
 " || abort "Failed to configure fstab entry for SMB"
 
 echo "Mounting SMB share..."
