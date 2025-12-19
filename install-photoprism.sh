@@ -45,9 +45,32 @@ echo "Creating SMB mount point..."
 
 pct exec $CTID -- bash -c "
 mkdir -p /mnt/originals
-echo \"//$NAS_SERVER/$NAS_SHARE /mnt/originals cifs username=$NAS_USER,password=$NAS_PASS,iocharset=utf8,vers=3.0,uid=1000,gid=1000,file_mode=0777,dir_mode=0777 0 0\" >> /etc/fstab
+echo "//$NAS_SERVER/$NAS_SHARE /mnt/originals cifs username=$NAS_USER,password=$NAS_PASS,iocharset=utf8,vers=3.0,uid=1000,gid=1000,file_mode=0777,dir_mode=0777,nounix,noserverino 0 0" >> /etc/fstab
+
+echo "Mounting SMB share..."
+pct exec $CTID -- bash -c "
+mkdir -p /mnt/originals
 mount -a
 "
+
+echo "Verifying SMB mount..."
+pct exec $CTID -- bash -c "
+if ! mount | grep -q '/mnt/originals'; then
+    echo 'ERROR: SMB share failed to mount. Check NAS credentials or network.'
+    exit 1
+fi
+
+if [ -z \"\$(ls -A /mnt/originals 2>/dev/null)\" ]; then
+    echo 'WARNING: SMB mounted but appears empty. Continuing anyway...'
+else
+    echo 'SMB mount verified and contains files.'
+fi
+"
+
+echo "Restarting Docker after SMB mount..."
+pct exec $CTID -- systemctl restart docker
+sleep 3
+
 
 ### --- CREATE PHOTOPRISM DOCKER COMPOSE --- ###
 echo "Deploying PhotoPrism..."
