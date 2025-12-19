@@ -13,7 +13,7 @@ PHOTOPRISM_PASSWORD="Dolphin1!"
 ### --- CREATE LXC CONTAINER --- ###
 echo "Creating LXC container $CTID..."
 
-pct create $CTID local:vztmpl/debian-12-standard_12.7-1_amd64.tar.zst \
+pct create $CTID local:vztmpl/debian-12-standard_12.12-1_amd64.tar.zst \
   --hostname $HOSTNAME \
   --cores 4 \
   --memory 8192 \
