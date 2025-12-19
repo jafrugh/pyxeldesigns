@@ -22,7 +22,7 @@ pct create $CTID local:vztmpl/debian-12-standard_12.12-1_amd64.tar.zst \
   --net0 name=eth0,bridge=vmbr0,ip=dhcp \
   --rootfs $STORAGE:32 \
   --unprivileged 0 \
-  --features nesting=1,keyctl=1 \
+  --features nesting=1,keyctl=1,mount=cifs \
   --start 1
 
 echo "Waiting for container to boot..."
