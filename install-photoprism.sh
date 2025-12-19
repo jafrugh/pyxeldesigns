@@ -60,7 +60,7 @@ services:
     ports:
       - 2342:2342
     environment:
-      PHOTOPRISM_ADMIN_PASSWORD: \"$PHOTOPRISM_PASSWORD\"
+      PHOTOPRISM_ADMIN_PASSWORD: \"Dolphin1!\"
       PHOTOPRISM_ORIGINALS_PATH: \"/mnt/originals\"
       PHOTOPRISM_STORAGE_PATH: \"/photoprism/storage\"
     volumes:
