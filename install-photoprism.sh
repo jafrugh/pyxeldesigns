@@ -9,6 +9,7 @@ NAS_SHARE="Photos"
 NAS_USER="jafrugh"
 NAS_PASS="Dolphin1!"
 PHOTOPRISM_PASSWORD="Dolphin1!"
+ROOT_PASSWORD="Dolphin1!"
 
 ### --- CREATE LXC CONTAINER --- ###
 echo "Creating LXC container $CTID..."
@@ -26,6 +27,9 @@ pct create $CTID local:vztmpl/debian-12-standard_12.12-1_amd64.tar.zst \
 
 echo "Waiting for container to boot..."
 sleep 5
+
+echo "Setting root password..."
+pct exec $CTID -- bash -c "echo 'root:$ROOT_PASSWORD' | chpasswd"
 
 ### --- INSTALL SMB + DOCKER INSIDE CONTAINER --- ###
 echo "Installing Docker + SMB client inside container..."
