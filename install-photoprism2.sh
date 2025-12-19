@@ -45,7 +45,7 @@ pct create "$CTID" "$TEMPLATE" \
   --net0 name=eth0,bridge=vmbr0,ip=dhcp \
   --rootfs "$STORAGE":32 \
   --unprivileged 0 \
-  --features nesting=1,keyctl=1 \
+  --features nesting=1,keyctl=1,mount=cifs \
   --start 1 || abort "Failed to create container"
 
 echo "Waiting for container to boot..."
