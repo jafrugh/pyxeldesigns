@@ -76,7 +76,7 @@ EOF
 ### --- START PHOTOPRISM --- ###
 pct exec $CTID -- bash -c "
 cd /opt/photoprism
-docker compose up -d
+docker-compose up -d
 "
 
 echo "PhotoPrism installation complete!"
