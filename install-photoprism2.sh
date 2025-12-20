@@ -22,7 +22,7 @@ PHOTOPRISM_ADMIN_PASSWORD="Dolphin1!"
 PHOTOPRISM_HTTP_PORT=2342
 
 # Debian LXC template on Proxmox (adjust if needed)
-TEMPLATE="local:vztmpl/debian-12-standard_13.1-2_amd64.tar.zst"
+TEMPLATE="local:vztmpl/debian-13-standard_13.1-2_amd64.tar.zst"
 
 
 ### --- FUNCTIONS --- ###
