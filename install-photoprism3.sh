@@ -48,7 +48,7 @@ fi
 
 echo "Creating Debian 12 LXC container..."
 
-pct create "$CTID" /var/lib/vz/template/cache/debian-12-standard_12.2-1_amd64.tar.zst \
+pct create "$CTID" /var/lib/vz/template/cache/debian-12-standard_12.12-1_amd64.tar.zst \
     -hostname "$HOSTNAME" \
     -cores "$CORES" \
     -memory "$RAM" \
