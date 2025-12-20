@@ -13,7 +13,7 @@ ROOT_PASSWORD="Dolphin1!"
 
 # NAS / SMB settings
 NAS_SERVER="192.168.10.14"
-NAS_SHARE="Photos"
+NAS_SHARE="Pictures"
 NAS_USER="jafrugh"
 NAS_PASS="Dolphin1!"
 
